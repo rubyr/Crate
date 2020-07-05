@@ -19,11 +19,18 @@ import SubscriptionItem from '../subscription/Item'
 class Subscriptions extends PureComponent {
 
   // Runs on server only for SSR
+  // This function is a dynamic way of fetching methods from the global store.  
+  // In this case, we are accessing the getListByUser method from the store and
+  // making it accessible to this component through its props.
   static fetchData({ store }) {
     return store.dispatch(getListByUser())
   }
 
   // Runs on client only
+  // This lifecycle method is invoked once the component is mounted.  After the
+  // component mounts, we are invoking the function getListByUser which will 
+  // return to us, the list of subscriptions this user has.  It will then
+  // update the global state with this information.
   componentDidMount() {
     this.props.getListByUser()
   }
@@ -49,6 +56,10 @@ class Subscriptions extends PureComponent {
 
         {/* Product list */}
         <Grid>
+          {/* In this GridCell, we are first checking if the subscriptions are loading, if they are it will render
+          the loading component, if not perform another check.  The second check is if the user has one or more
+          subscriptions, if yes then map over those subscriptions to display each using the SubscriptionItem
+          component inside of a div.  If user has zero subscriptios, render the EmptyMessage component informing them*/}
           <GridCell>
             {
               this.props.subscriptions.isLoading
@@ -69,12 +80,17 @@ class Subscriptions extends PureComponent {
 }
 
 // Component Properties
+// PropTypes are used to provide data type checks for props used in this component.  Will provide warnings
+// when the PropType is incorrect or isn't present when that prop is required.
 Subscriptions.propTypes = {
   subscriptions: PropTypes.object.isRequired,
   getListByUser: PropTypes.func.isRequired
 }
 
 // Component State
+// The function below allows this component to access the subscriptions property from the global state.
+// Even though we called getListByUser in this component, we are not accessing the return of that function
+// directly, but instead through the global state that the function updates.
 function subscriptionsState(state) {
   return {
     subscriptions: state.subscriptionsByUser

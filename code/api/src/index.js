@@ -1,7 +1,15 @@
+/* This file is used to trigger and setup all the required modules for the app to run. It is triggered by
+package.json when using npm
+*/ 
+
 // Imports
+// Makes express module available to the whole app
 import express from 'express'
 
 // App Imports
+/* This block triggers multiple setup files and starts the server.
+   It allows the methods below to be ran.
+*/
 import setupLoadModules from './setup/load-modules'
 import setupGraphQL from './setup/graphql'
 import setupUpload from './setup/upload'

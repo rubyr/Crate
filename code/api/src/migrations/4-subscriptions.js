@@ -1,3 +1,5 @@
+/* Adds Subscriptions to the database which joins users and crates
+*/
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('subscriptions', {

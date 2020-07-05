@@ -1,3 +1,5 @@
+/* Adds Users to the database 
+*/
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('users', {

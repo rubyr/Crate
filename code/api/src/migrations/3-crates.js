@@ -1,3 +1,5 @@
+/* Adds Crates to the database
+*/
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('crates', {

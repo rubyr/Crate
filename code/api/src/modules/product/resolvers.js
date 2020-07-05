@@ -1,12 +1,16 @@
+// Makes the database connection through the models file
+// Brings in the params file for checking product types
 // App Imports
 import params from '../../config/params'
 import models from '../../setup/models'
 
+// Returns all products from the database
 // Get all products
 export async function getAll() {
   return await models.Product.findAll({ order: [['id', 'DESC']] })
 }
 
+// Returns the product matching the given slug if it exists
 // Get product by slug
 export async function getBySlug(parentValue, { slug }) {
   const product = await models.Product.findOne({ where: { slug } })
@@ -19,6 +23,7 @@ export async function getBySlug(parentValue, { slug }) {
   }
 }
 
+// Returns the product matching the given ID
 // Get product by ID
 export async function getById(parentValue, { productId }) {
   const product = await models.Product.findOne({ where: { id: productId } })
@@ -31,6 +36,8 @@ export async function getById(parentValue, { productId }) {
   }
 }
 
+// Returns products related to the product ID given
+// Doesn't appear to be functional. No relationships have been established
 // Get related products
 export async function getRelated(parentValue, { productId }) {
   return await models.Product.findAll({
@@ -42,6 +49,7 @@ export async function getRelated(parentValue, { productId }) {
   })
 }
 
+// Creates a product if the user is authorized
 // Create product
 export async function create(parentValue, { name, slug, description, type, gender, image }, { auth }) {
   if(auth.user && auth.user.role === params.user.roles.admin) {
@@ -58,6 +66,7 @@ export async function create(parentValue, { name, slug, description, type, gende
   }
 }
 
+// Updates a product if the user is authorized
 // Update product
 export async function update(parentValue, { id, name, slug, description, type, gender, image }, { auth }) {
   if(auth.user && auth.user.role === params.user.roles.admin) {
@@ -77,6 +86,7 @@ export async function update(parentValue, { id, name, slug, description, type, g
   }
 }
 
+// Deletes a product by ID if the user is authorized
 // Delete product
 export async function remove(parentValue, { id }, { auth }) {
   if(auth.user && auth.user.role === params.user.roles.admin) {
@@ -93,6 +103,7 @@ export async function remove(parentValue, { id }, { auth }) {
   }
 }
 
+// Returns all product types as defined in the params.json file (gender)
 // Product types
 export async function getTypes() {
   return Object.values(params.product.types)

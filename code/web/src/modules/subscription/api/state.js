@@ -16,6 +16,7 @@ import {
 // Subscriptions list
 
 // Initial State
+// This sets the default state of the subscriptions property from the global store.
 const subscriptionsInitialState = {
   isLoading: false,
   error: null,
@@ -23,6 +24,11 @@ const subscriptionsInitialState = {
 }
 
 // State
+// These are the reducers related to the subscriptions actions.  The first case 'SUBSCRIPTIONS_GET_LIST_REQUEST'
+// will change the global store isLoading to true.  The second case 'SUBSCRIPTIONS_GET_LIST_RESPONSE' will change
+// isLoading to false and return the list from the payload into the list property of the global state.  The last case
+// 'SUBSCRIPTIONS_GET_LIST_FAILURE' will change isLoading to false and update the error property(true) of the global state
+// with the error payload.
 export const subscriptions = (state = subscriptionsInitialState, action) => {
   switch (action.type) {
     case SUBSCRIPTIONS_GET_LIST_REQUEST:
@@ -55,6 +61,7 @@ export const subscriptions = (state = subscriptionsInitialState, action) => {
 // Subscriptions list by user
 
 // Initial State
+// This sets the default state of the subscriptionsByUser property from the global store.
 const subscriptionsByUserInitialState = {
   isLoading: false,
   error: null,
@@ -62,6 +69,11 @@ const subscriptionsByUserInitialState = {
 }
 
 // State
+// These are the reducers related to the subscriptionsByUser actions.  The first case 'SUBSCRIPTIONS_GET_LIST_BY_USER_REQUEST'
+// will change the global store isLoading to true.  The second case 'SUBSCRIPTIONS_GET_LIST_BY_USER_RESPONSE' will change
+// isLoading to false and return the list from the payload into the list property of the global state.  The last case
+// 'SUBSCRIPTIONS_GET_LIST_BY_USER_FAILURE' will change isLoading to false and update the error property(true) of the global state
+// with the error payload.
 export const subscriptionsByUser = (state = subscriptionsByUserInitialState, action) => {
   switch (action.type) {
     case SUBSCRIPTIONS_GET_LIST_BY_USER_REQUEST:
@@ -94,6 +106,9 @@ export const subscriptionsByUser = (state = subscriptionsByUserInitialState, act
 // Single subscription
 
 // Initial State
+// This sets the default state of the subscription property from the global store.  As we can see it's initial value
+// is an object rather than an array like the previous two, because this property will be only one item/object rather
+// than an array of items/objects.
 const subscriptionInitialState = {
   isLoading: false,
   error: null,
@@ -101,6 +116,11 @@ const subscriptionInitialState = {
 }
 
 // State
+// These are the reducers related to the subscription actions.  The first case 'SUBSCRIPTIONS_GET_REQUEST'
+// will change the global store isLoading to true.  The second case 'SUBSCRIPTIONS_GET_RESPONSE' will change
+// isLoading to false and return the item from the payload into the item property of the global state.  The last case
+// 'SUBSCRIPTIONS_GET_FAILURE' will change isLoading to false and update the error property(true) of the global state
+// with the error payload.
 export const subscription = (state = subscriptionInitialState, action) => {
   switch (action.type) {
     case SUBSCRIPTIONS_GET_REQUEST:

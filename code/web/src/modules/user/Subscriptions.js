@@ -59,7 +59,7 @@ class Subscriptions extends PureComponent {
           {/* In this GridCell, we are first checking if the subscriptions are loading, if they are it will render
           the loading component, if not perform another check.  The second check is if the user has one or more
           subscriptions, if yes then map over those subscriptions to display each using the SubscriptionItem
-          component inside of a div.  If user has zero subscriptios, render the EmptyMessage component informing them*/}
+          component inside of a div.  If user has zero subscriptions, render the EmptyMessage component informing them*/}
           <GridCell>
             {
               this.props.subscriptions.isLoading

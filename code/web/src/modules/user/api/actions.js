@@ -1,5 +1,5 @@
 // Imports
-import axios from "axios" // axios is a promise-based http client similar to fetch
+import axios from "axios" // axios is a promise-based http client similar to fetch()
 import { query, mutation } from "gql-query-builder" // graphql query builder
 import cookie from "js-cookie" // javascript cookie manager
 
@@ -17,29 +17,31 @@ export const LOGOUT = "AUTH/LOGOUT"
 // Set a user after login or using localStorage token
 /**
  * @function
- * @param {string} token 
- * @param {import("../Profile").User} user 
+ * @param {string} token user's login token
+ * @param {import("../Profile").User} user user object that holds the user's details
  * @returns {object} redux payload with type and user object
  */
-export function setUser(token, user) {
-  if (token) {
-    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
+export function setUser(token, user) { // this function sets up axios for use with the backend
+  if (token) { 
+    // set the axios headers to have the token within them
+    axios.defaults.headers.common["Authorization"] = `Bearer ${token}` 
   } else {
-    delete axios.defaults.headers.common["Authorization"]
+    // remove the auth token from the headers
+    delete axios.defaults.headers.common["Authorization"] 
   }
-
-  return { type: SET_USER, user }
+  // returns redux action obj
+  return { type: SET_USER, user } 
 }
 
 // Login a user using credentials
 /**
  * @function
- * @param {object} userCredentials 
- * @param {boolean} isLoading 
+ * @param {object} userCredentials object holding the user's name and password
+ * @param {boolean?} isLoading optional parameter that sets isLoading in redux state
  * @returns {(dispatch: (a: object) => void) => Promise<void>}
  */
 export function login(userCredentials, isLoading = true) {
-  return (dispatch) => {
+  return (dispatch) => { // returns a function that takes in a dispatch object
     dispatch({ // dispatch a login request to the redux store
       type: LOGIN_REQUEST,
       isLoading,
@@ -48,19 +50,19 @@ export function login(userCredentials, isLoading = true) {
     return axios
       .post( // post a query to the api for a login request
         routeApi,
-        query({
+        query({ // query builder from gql library
           operation: "userLogin",
           variables: userCredentials,
           fields: ["user {name, email, role}", "token"],
         })
       )
-      .then((response) => {
+      .then((response) => { // after we get a response,
         let error = ""
 
         if (response.data.errors && response.data.errors.length > 0) { 
           error = response.data.errors[0].message // if we get back an error then store it
         } else if (response.data.data.userLogin.token !== "") {
-          const token = response.data.data.userLogin.token
+          const token = response.data.data.userLogin.token // grab the token and user details from response
           const user = response.data.data.userLogin.user
 
           dispatch(setUser(token, user)) // store the current user token and object in store
@@ -73,9 +75,9 @@ export function login(userCredentials, isLoading = true) {
           error,
         })
       })
-      .catch((error) => {
+      .catch((error) => { // if there's any errors
         dispatch({
-          type: LOGIN_RESPONSE, // dispatch a login response with an error to the store
+          type: LOGIN_RESPONSE, // dispatch a login response with an error msg to the store
           error: "Please try again",
         })
       })
@@ -85,23 +87,23 @@ export function login(userCredentials, isLoading = true) {
 // Set user token and info in localStorage and cookie
 /**
  * @function
- * @param {string} token 
- * @param {import("../Profile").User} user 
+ * @param {string} token user's login token
+ * @param {import("../Profile").User} user user object with details
  * @returns {void}
  */
 export function loginSetUserLocalStorageAndCookie(token, user) {
   // Update token
-  window.localStorage.setItem("token", token)
-  window.localStorage.setItem("user", JSON.stringify(user))
+  window.localStorage.setItem("token", token) // stores the user token within localStorage
+  window.localStorage.setItem("user", JSON.stringify(user)) // ls is contained in the user's browser
 
   // Set cookie for SSR
-  cookie.set("auth", { token, user }, { path: "/" })
+  cookie.set("auth", { token, user }, { path: "/" }) // as a backup, also sets a cookie in the user's browser
 }
 
 // Register a user
 /**
  * @function
- * @param {*} userDetails 
+ * @param {*} userDetails contains the user's name, email, password
  * @returns {(dispatch: *) => Promise<import("axios").AxiosResponse<any>>} response with new user object
  */
 export function register(userDetails) {
@@ -136,7 +138,7 @@ export function logout() {
 // Unset user token and info in localStorage and cookie
 /**
  * @function
- * @returns void
+ * @returns {void}
  */
 export function logoutUnsetUserLocalStorageAndCookie() {
   // Remove token

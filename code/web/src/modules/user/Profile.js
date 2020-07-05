@@ -18,9 +18,9 @@ import { logout } from "./api/actions" // logout function for logout button
 /**
  * @typedef User
  * @property {object} details
- * @property {string} details.role
- * @property {string} details.name
- * @property {string} details.email
+ * @property {string} details.role user's role, either "ADMIN" or "USER"
+ * @property {string} details.name user's name
+ * @property {string} details.email user's email
  * @description user data object, holds basic information about the user
  */
 
@@ -28,10 +28,10 @@ import { logout } from "./api/actions" // logout function for logout button
 /**
  * @function Profile
  * @description User profile react component
- * @param {object} props
- * @param {User} props.user
- * @param {() => () => void} props.logout
- * @returns {React.ReactNode}
+ * @param {object} props props contain anything passed down into the object
+ * @param {User} props.user user object with name, email, etc
+ * @param {() => () => void} props.logout function that logs the user out from the application
+ * @returns {React.ReactNode} returns a react node, which is like an HTML element
  */
 const Profile = (props) => (
   <div>
@@ -89,9 +89,9 @@ Profile.propTypes = {
  */
 function profileState(state) {
   return {
-    // redux state manager holds current user details
+    // redux state manager holds current user details, and we are requesting access to it
     user: state.user,
   }
 }
-
+// connect the profile node into the redux store, requesting access to the user object and the logout function
 export default connect(profileState, { logout })(Profile)

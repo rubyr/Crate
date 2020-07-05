@@ -3,7 +3,7 @@
 import { GraphQLInt, GraphQLList } from 'graphql'
 
 /* The resolvers and data types have been abstracted to external files and need to be
-   imported to use in these mutations
+   imported to use in these queries
  */
 // App Imports
 import SubscriptionType from './types'

@@ -1,6 +1,9 @@
+// This is defining which data types are used
 // Imports
 import { GraphQLObjectType, GraphQLString, GraphQLInt } from 'graphql'
 
+// Defining the attributes of a User and gives access to a GraphQL object for queries and mutations
+// Kind of like a GraphQL model
 // User type
 const UserType = new GraphQLObjectType({
   name: 'user',
@@ -17,6 +20,9 @@ const UserType = new GraphQLObjectType({
   })
 })
 
+// Defining the attributes of a Login and gives access to a GraphQL object for queries and mutations
+// There are two seperate Types for creating a User and an existing User login
+// Kind of like a GraphQL model
 // User Login type
 const UserLoginType = new GraphQLObjectType({
   name: 'userAuth',

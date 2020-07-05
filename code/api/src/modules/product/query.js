@@ -3,7 +3,7 @@
 import { GraphQLString, GraphQLInt, GraphQLList } from 'graphql'
 
 /* The resolvers and data types have been abstracted to external files and need to be
-   imported to use in these mutations
+   imported to use in these queries
  */
 // App Imports
 import { ProductType, ProductTypesType } from './types'

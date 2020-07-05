@@ -2,9 +2,7 @@
 // Imports
 import { GraphQLObjectType, GraphQLString, GraphQLInt } from 'graphql'
 
-/* The resolvers and data types have been abstracted to external files and need to be
-   imported to use in these mutations
- */
+// This is pulling in the UserType and CrateType from the other directories
 // App Imports
 import { UserType } from '../user/types'
 import CrateType from '../crate/types'

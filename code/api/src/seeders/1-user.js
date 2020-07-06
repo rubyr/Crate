@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt');
 const config = require('../config/server.json');
 const params = require('../config/params.json');
 
+// This is just seeding the database with Users
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('users', [

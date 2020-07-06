@@ -1,9 +1,12 @@
 // Imports
 import express from 'express'
 import path from 'path'
+// Allows controlling mutation access to our server
 import cors from 'cors'
+// Parses and exposes body of HTTP POST request
 import bodyParser from 'body-parser'
 import cookieParser from 'cookie-parser'
+// Logs request details
 import morgan from 'morgan'
 
 // App Imports

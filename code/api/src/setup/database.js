@@ -8,6 +8,7 @@ import databaseConfig from '../config/database.json'
 // Load database config
 const databaseConfigEnv = databaseConfig[NODE_ENV]
 
+// As it says this is making the database connection with Sequelize
 // Create new database connection
 const connection = new Sequelize(databaseConfigEnv.database, databaseConfigEnv.username, databaseConfigEnv.password, {
   host: databaseConfigEnv.host,

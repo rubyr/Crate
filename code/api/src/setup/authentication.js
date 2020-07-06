@@ -2,6 +2,7 @@
 import jwt from 'jsonwebtoken'
 import serverConfig from '../config/server.json'
 
+// Thinking this token functionality only allows our app to use this API
 // Authentication middleware
 export default function (request, response, next) {
   let authToken = request.headers.authorization

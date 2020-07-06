@@ -2,6 +2,7 @@
 
 const params = require('../config/params');
 
+// This is just seeding the database with Products
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('products', [

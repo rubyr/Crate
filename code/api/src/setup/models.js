@@ -3,7 +3,8 @@ import Sequelize from 'sequelize'
 
 // App Imports
 import databaseConnection from './database'
-
+// I think this is using Sequelize to brige the connection from our postgres database and
+// the GraphQL schema
 const models = {
   User: databaseConnection.import('../modules/user/model'),
   Product: databaseConnection.import('../modules/product/model'),

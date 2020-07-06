@@ -4,7 +4,7 @@ import multer from 'multer'
 
 // App Imports
 import serverConfig from '../config/server.json'
-
+// This is giving access do the images what we have in the system and allowing us to add more
 // File upload configurations and route
 export default function (server) {
   console.info('SETUP - Upload...')

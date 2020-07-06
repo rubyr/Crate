@@ -1,4 +1,8 @@
 'use strict'
+/* executes code in JavScript strict mode -->
+  Makes sure no accidental variable are created
+  by throwing an error instead of just creating the
+  typo object */
 
 module.exports = function(sequelize, DataTypes) {
   let Crate = sequelize.define('crates', {
@@ -9,7 +13,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.TEXT
     }
   })
-
+/* CRATE has many SUBSCRIPTIONS association */
   Crate.associate = function(models) {
     Crate.hasMany(models.Subscription)
   }

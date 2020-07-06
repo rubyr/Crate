@@ -1,11 +1,13 @@
 // Imports
 import { GraphQLString, GraphQLInt } from 'graphql'
 
+/* resolvers and data types live in types files and resolvers files because tehy have been abstracted */
 // App Imports
 import { ProductType } from './types'
 import { create, update, remove } from './resolvers'
 
 // Product create
+/* allows to create a product thru GraphQl query */
 export const productCreate = {
   type: ProductType,
   args: {
@@ -85,6 +87,7 @@ export const productUpdate = {
 }
 
 // Product remove
+/* call resolvers method with 'destroy' action */
 export const productRemove = {
   type: ProductType,
   args: {

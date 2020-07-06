@@ -1,3 +1,5 @@
+/* Returns object based on type defined in config/params.json file */
+
 // Imports
 import { GraphQLObjectType, GraphQLString, GraphQLInt } from 'graphql'
 
@@ -20,6 +22,7 @@ const ProductType = new GraphQLObjectType({
 })
 
 // User Gender type
+/* params.json file seems similar to Rails 'enum' syntax */
 const ProductTypesType = new GraphQLObjectType({
   name: 'productTypesType',
   description: 'User Types Type',

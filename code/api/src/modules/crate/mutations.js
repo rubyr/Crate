@@ -1,10 +1,13 @@
+/* Defines which datatypes are available to GraphQL */
 // Imports
 import { GraphQLString, GraphQLInt } from 'graphql'
 
+/* CRUD type methods called */
 // App Imports
 import CrateType from './types'
 import { create, remove, update } from './resolvers'
 
+/* creates new CRATE */
 // Crate create
 export const crateCreate = {
   type: CrateType,
@@ -22,6 +25,7 @@ export const crateCreate = {
   resolve: create
 }
 
+/* updates a CRATE by its id */
 // Crate update
 export const crateUpdate = {
   type: CrateType,
@@ -44,6 +48,7 @@ export const crateUpdate = {
   resolve: update
 }
 
+/* deletes a CRATE by id */
 // Crate remove
 export const crateRemove = {
   type: CrateType,

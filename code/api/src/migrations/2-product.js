@@ -1,3 +1,7 @@
+/* Similar to Rails Migrations -->
+  will need to determine how to add/update migrations
+  to add table columns as needed for new functionality */
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('products', {

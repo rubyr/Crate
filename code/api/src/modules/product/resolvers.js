@@ -36,6 +36,7 @@ export async function getRelated(parentValue, { productId }) {
   return await models.Product.findAll({
     where: {
       id: { [models.Sequelize.Op.not]: productId }
+      /* excludes current product from search */
     },
     limit: 3,
     order: [[models.Sequelize.fn('RAND')]] // mock related products by showing random products
@@ -94,6 +95,7 @@ export async function remove(parentValue, { id }, { auth }) {
 }
 
 // Product types
+/* Returns product based on values from params.json file */
 export async function getTypes() {
   return Object.values(params.product.types)
 }

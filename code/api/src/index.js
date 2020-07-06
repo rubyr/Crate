@@ -1,4 +1,8 @@
+/* 'Runner' type file --> app setup/starting point
+  Hits package.json file --> like Gemfile in Rails */
+
 // Imports
+/* Makes Express module available to whole app */
 import express from 'express'
 
 // App Imports

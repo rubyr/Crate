@@ -1,5 +1,6 @@
 'use strict'
 
+/* Similar to Rails model def attributes and relationships for a Produxt */
 // Product
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('products', {

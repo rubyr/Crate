@@ -1,3 +1,4 @@
+/* Defines which datatypes are available to GraphQL */
 // Imports
 import { GraphQLString, GraphQLInt } from 'graphql'
 
@@ -5,6 +6,7 @@ import { GraphQLString, GraphQLInt } from 'graphql'
 import { UserType } from './types'
 import { create, remove } from './resolvers'
 
+/* adds extra layer of access to databse for GraphQL */
 // Create
 export const userSignup = {
   type: UserType,

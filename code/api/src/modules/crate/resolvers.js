@@ -1,3 +1,6 @@
+/* Pulls in access to db thru models file
+  and references Params file for authorization */
+
 // App Imports
 import models from '../../setup/models'
 import params from '../../config/params'
@@ -23,6 +26,8 @@ export async function getAll(parentValue, { orderBy }) {
 export async function create(parentValue, { name, description }, { auth }) {
   if(auth.user && auth.user.role === params.user.roles.admin) {
     return await models.Crate.create({
+      /* If table is updated,
+        will need to add new column listing here? */
       name,
       description
     })
@@ -35,6 +40,8 @@ export async function create(parentValue, { name, description }, { auth }) {
 export async function update(parentValue, { id, name, description }, { auth }) {
   if(auth.user && auth.user.role === params.user.roles.admin) {
     return await models.Crate.update(
+      /* If table is updated,
+        will need to add new column listing here? */
       {
         name,
         description

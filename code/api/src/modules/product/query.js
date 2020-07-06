@@ -1,3 +1,5 @@
+/* establishes endpoints using GraphQL */
+
 // Imports
 import { GraphQLString, GraphQLInt, GraphQLList } from 'graphql'
 

@@ -10,6 +10,7 @@ const SpikeType = new GraphQLObjectType({
     id: { type: GraphQLInt },
     name: { type: GraphQLString },
     email: { type: GraphQLString },
+    zodiac: { type: GraphQLString },
     createdAt: { type: GraphQLString },
     updatedAt: { type: GraphQLString }
   })

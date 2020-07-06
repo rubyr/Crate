@@ -1,13 +1,17 @@
 // Imports
 import { GraphQLString, GraphQLInt } from 'graphql'
 
-/* resolvers and data types live in types files and resolvers files because tehy have been abstracted */
+/* resolvers and data types live in types files and resolvers files
+  because they have been abstracted */
+
 // App Imports
 import { ProductType } from './types'
 import { create, update, remove } from './resolvers'
 
-// Product create
+/* 'Mutations' file contains modifying CRUD type methods */
 /* allows to create a product thru GraphQl query */
+
+// Product create
 export const productCreate = {
   type: ProductType,
   args: {

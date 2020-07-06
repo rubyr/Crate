@@ -1,6 +1,9 @@
 // Imports
 import Sequelize from 'sequelize'
 
+/* Looks to connect Sequelize to the postgres db
+  -->  WILL NEED TO MODIFY if tables/models added */
+
 // App Imports
 import databaseConnection from './database'
 

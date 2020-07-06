@@ -1,7 +1,8 @@
-/* Similar to Rails Migrations -->
-  will need to determine how to add/update migrations
-  to add table columns as needed for new functionality.
-  --> Looks similar to a Rails joins table */
+/* Similar to Rails migration to add Subscription table to db
+--> Has foreign key reference to Crate ID
+--> Need to determine how to add new columns
+    either by editing this migration or creating
+    new modifying migration */
 
 module.exports = {
   up: (queryInterface, Sequelize) => {

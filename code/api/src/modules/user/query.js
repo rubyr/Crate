@@ -5,6 +5,9 @@ import { GraphQLInt, GraphQLString, GraphQLList } from 'graphql'
 import { UserType, UserLoginType, UserGenderType } from './types'
 import { getAll, getById, login, getGenders } from './resolvers'
 
+/* 'Query' file contains non-modifying CRUD type methods
+  --> methods executed in the 'Resolvers' file */
+
 // All
 export const users = {
   type: new GraphQLList(UserType),

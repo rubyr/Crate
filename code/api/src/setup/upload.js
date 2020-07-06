@@ -9,6 +9,8 @@ import serverConfig from '../config/server.json'
 export default function (server) {
   console.info('SETUP - Upload...')
 
+/* May be of interest depending how we store USER IMAGES?? */
+
   // Set destination
   const storage = multer.diskStorage({
     destination: path.join(__dirname, '..', '..', 'public', 'images', 'uploads'),

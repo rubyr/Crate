@@ -7,6 +7,8 @@ import { GraphQLString, GraphQLInt, GraphQLList } from 'graphql'
 import { ProductType, ProductTypesType } from './types'
 import { getAll, getBySlug, getById, getRelated, getTypes } from './resolvers'
 
+/* 'Query' file contains non-modifying CRUD type methods */
+
 // Products All
 export const products = {
   type: new GraphQLList(ProductType),

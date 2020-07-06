@@ -1,5 +1,11 @@
+/* Pulls in access to db thru models file
+  and references Params file for authorization */
+
 // App Imports
 import models from '../../setup/models'
+
+/* 'Resolvers' determines what to do with each call and returns
+data payload in format specified by 'Types' file */
 
 // Get subscription by ID
 export async function get(parentValue, { id }) {

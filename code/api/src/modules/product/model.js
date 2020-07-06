@@ -1,6 +1,10 @@
 'use strict'
-
-/* Similar to Rails model def attributes and relationships for a Produxt */
+/* executes code in JavScript strict mode -->
+  Makes sure no accidental variable are created
+  by throwing an error instead of just creating the
+  typo object */
+  
+/* Similar to Rails model def attributes and relationships for a Product */
 // Product
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('products', {

@@ -9,6 +9,9 @@ import CrateType from '../crate/types'
 const SubscriptionType = new GraphQLObjectType({
   name: 'subscription',
   description: 'Subscription Type',
+/* Separates table columns into individual GraphQL objects to
+enable separte queries for each part? -->
+Like a GraphQL model */
 
   fields: () => ({
     id: { type: GraphQLInt },

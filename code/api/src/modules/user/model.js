@@ -4,6 +4,7 @@
   by throwing an error instead of just creating the
   typo object */ 
 
+/* Looks similar to Rails model defining attribute with its datatype */
 // User
 module.exports = function(sequelize, DataTypes) {
   let User = sequelize.define('users', {

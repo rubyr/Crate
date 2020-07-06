@@ -5,6 +5,7 @@ import { GraphQLInt, GraphQLList } from 'graphql'
 import SubscriptionType from './types'
 import { getAll, getByUser, get } from './resolvers'
 
+/* 'Query' file contains non-modifying CRUD type methods */
 // Subscriptions All
 export const subscriptions = {
   type: new GraphQLList(SubscriptionType),

@@ -5,6 +5,8 @@ import { GraphQLInt } from 'graphql'
 import SubscriptionType from './types'
 import { create, remove } from './resolvers'
 
+/* 'Mutations' file contains modifying CRUD type methods */
+
 // Subscription create
 export const subscriptionCreate = {
   type: SubscriptionType,

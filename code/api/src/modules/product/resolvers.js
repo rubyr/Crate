@@ -1,6 +1,12 @@
+/* Pulls in access to db thru models file
+  and references 'Params' file for authorization */
+
 // App Imports
 import params from '../../config/params'
 import models from '../../setup/models'
+
+/* 'Resolvers' determines what to do with each call and returns
+data payload in format specified by 'Types' file */
 
 // Get all products
 export async function getAll() {

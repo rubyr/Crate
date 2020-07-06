@@ -1,3 +1,6 @@
+/* Pulls in access to db thru models file
+  and references Params file for authorization */
+
 // Imports
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
@@ -6,6 +9,9 @@ import jwt from 'jsonwebtoken'
 import serverConfig from '../../config/server'
 import params from '../../config/params'
 import models from '../../setup/models'
+
+/* 'Resolvers' determines what to do with each call and returns
+data payload in format specified by 'Types' file */
 
 // Create
 export async function create(parentValue, { name, email, password }) {

@@ -6,7 +6,10 @@ import { GraphQLString, GraphQLInt } from 'graphql'
 import { UserType } from './types'
 import { create, remove } from './resolvers'
 
-/* adds extra layer of access to databse for GraphQL */
+/* 'Mutations' file contains modifying CRUD type methods
+  --> adds extra layer of access to databse for GraphQL
+  --> methods executed in the 'Resolvers' file */
+  
 // Create
 export const userSignup = {
   type: UserType,

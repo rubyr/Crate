@@ -1,6 +1,10 @@
 // Imports
 import { GraphQLObjectType, GraphQLString, GraphQLInt } from 'graphql'
 
+/* Separates table columns into individual GraphQL objects to
+  enable separte queries for each part? -->
+  Like a GraphQL model */
+  
 // User type
 const UserType = new GraphQLObjectType({
   name: 'user',

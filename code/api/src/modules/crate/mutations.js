@@ -2,11 +2,11 @@
 // Imports
 import { GraphQLString, GraphQLInt } from 'graphql'
 
-/* CRUD type methods called */
 // App Imports
 import CrateType from './types'
 import { create, remove, update } from './resolvers'
 
+/* 'Mutations' file contains modifying CRUD type methods */
 /* creates new CRATE */
 // Crate create
 export const crateCreate = {

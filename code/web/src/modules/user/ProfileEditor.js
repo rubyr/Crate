@@ -30,17 +30,17 @@ class ProfileEditor extends Component {
     this.state = {
       isLoading: false,
       user: {
-        ...props.user
+        ...props.user.details
       },
     }
   }
 
   onChange = (event) => {
-    let info = {...this.state.user}
-    info[event.target.name] = event.target.value
+    let user = {...this.state.user}
+    user[event.target.name] = event.target.value
 
     this.setState({
-      info
+      user
     })
   }
 
@@ -83,44 +83,43 @@ class ProfileEditor extends Component {
   }
 
   onUpload = (event) => {
-    // this.props.messageShow('Uploading file, please wait...')
+    this.props.messageShow('Uploading file, please wait...')
 
-    // this.setState({
-    //   isLoading: true
-    // })
+    this.setState({
+      isLoading: true
+    })
 
-    // let data = new FormData()
-    // data.append('file', event.target.files[0])
+    let data = new FormData()
+    data.append('file', event.target.files[0])
 
     // // Upload image
-    // this.props.upload(data)
-    //   .then(response => {
-    //     if (response.status === 200) {
-    //       this.props.messageShow('File uploaded successfully.')
+    this.props.upload(data)
+      .then(response => {
+        if (response.status === 200) {
+          this.props.messageShow('File uploaded successfully.')
 
-    //       let info = this.state.product
-    //       info.image = `/images/uploads/${ response.data.file }`
+          let user = {...this.state.user}
+          user.image = `/images/uploads/${ response.data.file }`
 
-    //       this.setState({
-    //         info
-    //       })
-    //     } else {
-    //       this.props.messageShow('Please try again.')
-    //     }
-    //   })
-    //   .catch(error => {
-    //     this.props.messageShow('There was some error. Please try again.')
+          this.setState({
+            user
+          })
+        } else {
+          this.props.messageShow('Please try again.')
+        }
+      })
+      .catch(error => {
+        this.props.messageShow('There was some error. Please try again.')
+      })
+      .then(() => {
+        this.setState({
+          isLoading: false
+        })
 
-    //   })
-    //   .then(() => {
-    //     this.setState({
-    //       isLoading: false
-    //     })
-
-    //     window.setTimeout(() => {
-    //       this.props.messageHide()
-    //     }, 5000)
-    //   })
+        window.setTimeout(() => {
+          this.props.messageHide()
+        }, 5000)
+      })
   }
 
   render() {

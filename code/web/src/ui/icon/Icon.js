@@ -24,7 +24,8 @@ const Icon = (props) => {
 
 // Component Properties
 Icon.propTypes = {
-  size: PropTypes.number
+  size: PropTypes.number,
+  children: PropTypes.oneOfType([PropTypes.element, PropTypes.string])
 }
 Icon.defaultProps = {
   size: 1

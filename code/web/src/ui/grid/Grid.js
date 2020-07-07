@@ -63,6 +63,9 @@ Grid.propTypes = {
   alignCenter: PropTypes.bool,
 
   gutter: PropTypes.bool,
+
+  children: PropTypes.element,
+  style: PropTypes.object
 }
 
 Grid.defaultProps = {

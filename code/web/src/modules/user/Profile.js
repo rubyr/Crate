@@ -9,6 +9,10 @@ import { Link } from 'react-router-dom'
 import { Grid, GridCell } from '../../ui/grid'
 import { H3, H4 } from '../../ui/typography'
 import Button from '../../ui/button'
+import Icon from '../../ui/icon'
+import { white, black } from '../../ui/common/colors'
+
+
 import { grey, grey2 } from '../../ui/common/colors'
 
 // App Imports
@@ -26,7 +30,11 @@ const Profile = (props) => (
     {/* Top title bar */}
     <Grid style={{ backgroundColor: grey }}>
       <GridCell style={{ padding: '2em', textAlign: 'center' }}>
-        <H3 font="secondary">My profile</H3>
+        <H3 font="secondary">My profile
+          <Link to={userRoutes.edit.path}>
+            <Icon size={1} style={{ color: black, display: 'inline', marginLeft: '10px' }}>mode_edit</Icon>
+          </Link>
+        </H3>
       </GridCell>
     </Grid>
 

@@ -121,6 +121,9 @@ export function getGenders() {
 // Update user profile info
 export function update(user) {
   return dispatch => {
+    let token = localStorage.getItem("token")
+    window.localStorage.setItem('user', JSON.stringify(user))
+    dispatch(setUser(token, user))
     return axios.post(routeApi, mutation({
       operation: 'userUpdate',
       variables: {id: user.id, email: user.email},

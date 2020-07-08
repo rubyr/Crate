@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Helmet } from 'react-helmet'
 import { Link } from 'react-router-dom'
-import { withRouter } from 'react-router-dom'
 
 // UI Imports
 import { Grid, GridCell } from '../../ui/grid'
@@ -19,7 +18,7 @@ import user from '../../setup/routes/user'
 import { routeImage } from "../../setup/routes"
 import { renderIf } from '../../setup/helpers'
 import { upload, messageShow, messageHide } from '../common/api/actions'
-import Profile from './Profile'
+import { update as updateProfile } from "./api/actions";
 
 // Component
 class ProfileEditor extends Component {
@@ -45,41 +44,43 @@ class ProfileEditor extends Component {
   }
 
   onSubmit = (event) => {
-    // event.preventDefault()
+    event.preventDefault()
 
-    // this.setState({
-    //   isLoading: true
-    // })
+    this.setState({
+      isLoading: true
+    })
 
-    // this.props.messageShow('Saving product, please wait...')
+    this.props.messageShow('Saving info, please wait...')
 
-    // // Save product
-    // this.props.productCreateOrUpdate(this.state.product)
-    //   .then(response => {
-    //     this.setState({
-    //       isLoading: false
-    //     })
+    // Save User Info
+    this.props.updateProfile(this.state.user)
+      .then(response => {
+        this.setState({
+          isLoading: false
+        })
 
-    //     if (response.data.errors && response.data.errors.length > 0) {
-    //       this.props.messageShow(response.data.errors[0].message)
-    //     } else {
-    //       this.props.messageShow('Product saved successfully.')
+        if (response.data.errors && response.data.errors.length > 0) {
+          this.props.messageShow(response.data.errors[0].message)
+        } else {
+          this.props.messageShow('Info saved successfully.')
 
-    //       // this.props.history.push(admin.productList.path)  
-    //     }
-    //   })
-    //   .catch(error => {
-    //     this.props.messageShow('There was some error. Please try again.')
+          console.log(response);
 
-    //     this.setState({
-    //       isLoading: false
-    //     })
-    //   })
-    //   .then(() => {
-    //     window.setTimeout(() => {
-    //       this.props.messageHide()
-    //     }, 5000)
-    //   })
+          this.props.history.push(user.profile.path)  
+        }
+      })
+      .catch(error => {
+        this.props.messageShow('There was some error. Please try again.')
+
+        this.setState({
+          isLoading: false
+        })
+      })
+      .then(() => {
+        window.setTimeout(() => {
+          this.props.messageHide()
+        }, 5000)
+      })
   }
 
   onUpload = (event) => {
@@ -156,7 +157,6 @@ class ProfileEditor extends Component {
                     type="text"
                     fullWidth={true}
                     placeholder="Name"
-                    required="required"
                     name="name"
                     autoComplete="off"
                     value={this.state.user.name}
@@ -167,7 +167,6 @@ class ProfileEditor extends Component {
                   <Textarea
                     fullWidth={true}
                     placeholder="Bio"
-                    required="required"
                     name="bio"
                     value={this.state.user.bio}
                     onChange={this.onChange}
@@ -178,7 +177,6 @@ class ProfileEditor extends Component {
                     type="email"
                     fullWidth={true}
                     placeholder="Email"
-                    required="required"
                     name="email"
                     value={this.state.user.email}
                     onChange={this.onChange}
@@ -188,7 +186,6 @@ class ProfileEditor extends Component {
                     type="text"
                     fullWidth={true}
                     placeholder="Address"
-                    required="required"
                     name="address"
                     value={this.state.user.address}
                     onChange={this.onChange}
@@ -199,12 +196,11 @@ class ProfileEditor extends Component {
                     <input
                       type="file"
                       onChange={this.onUpload}
-                      required={false}
                     />
                   </div>
 
                   {/* Uploaded image */}
-                  {renderIf(this.state.user.image !== '', () => (
+                  {renderIf(!!this.state.user.image, () => (
                     <img src={routeImage + this.state.user.image} alt="User Image"
                          style={{ width: 200, marginTop: '1em' }}/>
                   ))}
@@ -239,5 +235,6 @@ function profileEditorState(state) {
 export default connect(profileEditorState, {
   upload,
   messageShow,
-  messageHide
+  messageHide,
+  updateProfile
 })(ProfileEditor)

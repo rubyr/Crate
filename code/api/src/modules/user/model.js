@@ -14,6 +14,15 @@ module.exports = function(sequelize, DataTypes) {
     },
     role: {
       type: DataTypes.TEXT
+    },
+    bio: {
+      type: DataTypes.TEXT
+    },
+    address: {
+      type: DataTypes.TEXT
+    },
+    image: {
+      type: DataTypes.TEXT
     }
   })
 

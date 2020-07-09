@@ -42,7 +42,9 @@ GridCell.propTypes = {
   alignCenter: PropTypes.bool,
   justifyRight: PropTypes.bool,
   justifyCenter: PropTypes.bool,
-  gutter: PropTypes.bool
+  gutter: PropTypes.bool,
+  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.element), PropTypes.element]),
+  style: PropTypes.object
 }
 GridCell.defaultProps = {
   alignTop: false,

@@ -9,11 +9,16 @@ import { Link } from 'react-router-dom'
 import { Grid, GridCell } from '../../ui/grid'
 import { H3, H4 } from '../../ui/typography'
 import Button from '../../ui/button'
+import Icon from '../../ui/icon'
+import { white, black } from '../../ui/common/colors'
+
+
 import { grey, grey2 } from '../../ui/common/colors'
 
 // App Imports
 import userRoutes from '../../setup/routes/user'
 import { logout } from './api/actions'
+import { routeImage } from '../../setup/routes'
 
 // Component
 const Profile = (props) => (
@@ -26,7 +31,11 @@ const Profile = (props) => (
     {/* Top title bar */}
     <Grid style={{ backgroundColor: grey }}>
       <GridCell style={{ padding: '2em', textAlign: 'center' }}>
-        <H3 font="secondary">My profile</H3>
+        <H3 font="secondary">My profile
+          <Link to={userRoutes.edit.path}>
+            <Icon size={1} style={{ color: black, display: 'inline', marginLeft: '10px' }}>mode_edit</Icon>
+          </Link>
+        </H3>
       </GridCell>
     </Grid>
 
@@ -34,7 +43,10 @@ const Profile = (props) => (
       <GridCell style={{ padding: '2em', textAlign: 'center' }}>
         <H4 style={{ marginBottom: '0.5em' }}>{props.user.details.name}</H4>
 
-        <p style={{ color: grey2, marginBottom: '2em' }}>{props.user.details.email}</p>
+        <p style={{ color: grey2, marginBottom: '0.5em' }}>{props.user.details.email}</p>
+        <p style={{ color: grey2, marginBottom: '3em' }}>{props.user.details.address}</p>
+        <img src={routeImage + props.user.details.image} alt={props.user.details.name} style={{ width: 400 }}/>
+        <p style={{ color: black, marginBottom: '2em', marginTop: '2em' }}>{props.user.details.bio}</p>
 
         <Link to={userRoutes.subscriptions.path}>
           <Button theme="primary">Subscriptions</Button>

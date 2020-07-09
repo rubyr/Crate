@@ -3,6 +3,7 @@ import Login from '../../modules/user/Login'
 import Signup from '../../modules/user/Signup'
 import Profile from '../../modules/user/Profile'
 import Subscriptions from '../../modules/user/Subscriptions'
+import ProfileEditor from '../../modules/user/ProfileEditor'
 
 // User routes
 export default {
@@ -14,6 +15,12 @@ export default {
   signup: {
     path: '/user/signup',
     component: Signup
+  },
+
+  edit: {
+    path: '/user/profile/edit',
+    component: ProfileEditor,
+    auth: true
   },
 
   profile: {

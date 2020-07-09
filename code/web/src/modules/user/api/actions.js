@@ -36,7 +36,7 @@ export function login(userCredentials, isLoading = true) {
     return axios.post(routeApi, query({
       operation: 'userLogin',
       variables: userCredentials,
-      fields: ['user {name, email, role}', 'token']
+      fields: ['user {name, email, role, id, bio, address, image}', 'token']
     }))
       .then(response => {
         let error = ''
@@ -114,6 +114,22 @@ export function getGenders() {
     return axios.post(routeApi, query({
       operation: 'userGenders',
       fields: ['id', 'name']
+    }))
+  }
+}
+
+// Update user profile info
+export function update(user) {
+  return dispatch => {
+    const {id, email, name, address, bio, image} = user
+    let token = localStorage.getItem("token")
+    window.localStorage.setItem('user', JSON.stringify(user))
+    dispatch(setUser(token, user))
+    
+    return axios.post(routeApi, mutation({
+      operation: 'userUpdate',
+      variables: {id, email, name, address, bio, image},
+      fields: ['id']
     }))
   }
 }

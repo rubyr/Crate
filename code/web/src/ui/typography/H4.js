@@ -26,7 +26,11 @@ const H4 = (props) => {
 
 // Component Properties
 H4.propTypes = {
-  font: PropTypes.string
+  font: PropTypes.string,
+  style: PropTypes.object,  
+  children: PropTypes.oneOfType(
+    [PropTypes.string, PropTypes.element, PropTypes.arrayOf(PropTypes.element)]
+  )
 }
 H4.defaultProps = {
   font: 'primary'

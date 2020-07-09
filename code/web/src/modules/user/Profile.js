@@ -45,7 +45,7 @@ const Profile = (props) => (
 
         <p style={{ color: grey2, marginBottom: '0.5em' }}>{props.user.details.email}</p>
         <p style={{ color: grey2, marginBottom: '3em' }}>{props.user.details.address}</p>
-        <img src={routeImage + props.user.details.image} alt={name} style={{ width: 400 }}/>
+        <img src={routeImage + props.user.details.image} alt={props.user.details.name} style={{ width: 400 }}/>
         <p style={{ color: black, marginBottom: '2em', marginTop: '2em' }}>{props.user.details.bio}</p>
 
         <Link to={userRoutes.subscriptions.path}>

@@ -65,8 +65,6 @@ class ProfileEditor extends Component {
         } else {
           this.props.messageShow('Info saved successfully.')
 
-          console.log(response);
-
           this.props.history.push(user.profile.path)  
         }
       })

@@ -18,6 +18,7 @@ import { grey, grey2 } from '../../ui/common/colors'
 // App Imports
 import userRoutes from '../../setup/routes/user'
 import { logout } from './api/actions'
+import { routeImage } from '../../setup/routes'
 
 // Component
 const Profile = (props) => (
@@ -42,7 +43,10 @@ const Profile = (props) => (
       <GridCell style={{ padding: '2em', textAlign: 'center' }}>
         <H4 style={{ marginBottom: '0.5em' }}>{props.user.details.name}</H4>
 
-        <p style={{ color: grey2, marginBottom: '2em' }}>{props.user.details.email}</p>
+        <p style={{ color: grey2, marginBottom: '0.5em' }}>{props.user.details.email}</p>
+        <p style={{ color: grey2, marginBottom: '3em' }}>{props.user.details.address}</p>
+        <img src={routeImage + props.user.details.image} alt={name} style={{ width: 400 }}/>
+        <p style={{ color: black, marginBottom: '2em', marginTop: '2em' }}>{props.user.details.bio}</p>
 
         <Link to={userRoutes.subscriptions.path}>
           <Button theme="primary">Subscriptions</Button>

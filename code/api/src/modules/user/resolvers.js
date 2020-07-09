@@ -19,6 +19,9 @@ export async function create(parentValue, { name, email, password }) {
     return await models.User.create({
       name,
       email,
+      bio,
+      address,
+      image,
       password: passwordHashed
     })
   } else {
@@ -47,7 +50,10 @@ export async function login(parentValue, { email, password }) {
         id: userDetails.id,
         name: userDetails.name,
         email: userDetails.email,
-        role: userDetails.role
+        role: userDetails.role,
+        bio: userDetails.bio,
+        address: userDetails.address,
+        image: userDetails.image
       }
 
       return {
@@ -59,11 +65,15 @@ export async function login(parentValue, { email, password }) {
 }
 
 // Update user
-export async function update(parentValue, { id, email }, { auth }) {
+export async function update(parentValue, { id, email, name, bio, address, image }, { auth }) {
   if (auth.user && auth.user.role === params.user.roles.user || params.user.roles.admin) {
     return await models.User.update(
       {
-        email
+        name,
+        email,
+        bio,
+        address,
+        image
       },
       { where: { id } }
     )

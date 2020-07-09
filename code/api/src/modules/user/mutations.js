@@ -27,7 +27,7 @@ export const userSignup = {
   resolve: create
 }
 
-// Crate update
+// User update
 export const userUpdate = {
   type: UserType,
   args: {
@@ -36,8 +36,28 @@ export const userUpdate = {
       type: GraphQLInt
     },
 
+    bio: {
+      bio: 'bio',
+      type: GraphQLString
+    },
+
     email: {
       email: 'email',
+      type: GraphQLString
+    },
+
+    address: {
+      address: 'address',
+      type: GraphQLString
+    },
+
+    name: {
+      name: 'name',
+      type: GraphQLString
+    },
+
+    image: {
+      image: 'image',
       type: GraphQLString
     }
   },

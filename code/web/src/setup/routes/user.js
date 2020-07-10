@@ -4,6 +4,7 @@ import Signup from '../../modules/user/Signup'
 import Profile from '../../modules/user/Profile'
 import Subscriptions from '../../modules/user/Subscriptions'
 import ProfileEditor from '../../modules/user/ProfileEditor'
+import Shipments from '../../modules/user/Shipments'
 
 // User routes
 export default {
@@ -32,6 +33,12 @@ export default {
   subscriptions: {
     path: '/user/subscriptions',
     component: Subscriptions,
+    auth: true
+  },
+
+  shipments: {
+    path: '/user/shipments',
+    component: Shipments,
     auth: true
   }
 }

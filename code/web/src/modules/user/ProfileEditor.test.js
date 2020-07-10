@@ -7,7 +7,7 @@ import { createStore, compose } from "redux"
 import { rootReducer } from "../../setup/store"
 import { MemoryRouter } from "react-router-dom"
 import { SET_USER } from "./api/actions"
-import { update } from "./api/actions";
+import { update as updateProfile } from "./api/actions";
 jest.mock("./api/actions");
 
 const renderTestWrapper = () => {
@@ -57,15 +57,15 @@ describe('ProfileEditor', () => {
   it("should update its state when fields are changed", () => {
     const { getByDisplayValue, getByPlaceholderText } = renderTestWrapper()
     fireEvent.change(getByPlaceholderText("Name"), {target: {value: "sbeven jeven"}})
-    expect(getByDisplayValue("sbeven jeven")).toBeInTheDocument();
+    expect(getByDisplayValue("sbeven jeven")).toBeInTheDocument()
   })
 
-  it('should call update with new user info when save is clicked', () => {
-    const mockUpdate = jest.fn();
-    update.mockImplementation(mockUpdate);
+  it('should call api/actions.js/update() with new user info when save is clicked', () => {
+    const mockUpdate = jest.fn((user) => ({type: "", data: {}, then: () => ({catch: () => ({then: () => {}})})}))
+    updateProfile.mockImplementation(mockUpdate)
     const { getByText, getByPlaceholderText } = renderTestWrapper()
     fireEvent.change(getByPlaceholderText("Name"), {target: {value: "sbeven jeven"}})
-    fireEvent.click(getByText("Save"));
-    expect(mockUpdate).toHaveBeenCalled();
+    fireEvent.click(getByText("Save"))
+    expect(mockUpdate).toHaveBeenCalled()
   })
 })

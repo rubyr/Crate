@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Helmet } from 'react-helmet'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 
 // UI Imports
 import { Grid, GridCell } from '../../ui/grid'
@@ -19,6 +19,7 @@ import { grey, grey2 } from '../../ui/common/colors'
 import userRoutes from '../../setup/routes/user'
 import { logout } from './api/actions'
 import { routeImage } from '../../setup/routes'
+import user from '../../setup/routes/user'
 
 // Component
 const Profile = (props) => (
@@ -41,13 +42,15 @@ const Profile = (props) => (
 
     <Grid>
       <GridCell style={{ padding: '2em', textAlign: 'center' }}>
-        <H4 style={{ marginBottom: '0.5em' }}>{props.user.details.name}</H4>
-
-        <p style={{ color: grey2, marginBottom: '0.5em' }}>{props.user.details.email}</p>
-        <p style={{ color: grey2, marginBottom: '3em' }}>{props.user.details.address}</p>
-        <img src={routeImage + props.user.details.image} alt={props.user.details.name} style={{ width: 400 }}/>
-        <p style={{ color: black, marginBottom: '2em', marginTop: '2em' }}>{props.user.details.bio}</p>
-
+        {props.user.details ? 
+          <>
+            <H4 style={{ marginBottom: '0.5em' }}>{props.user.details.name}</H4>
+            <p style={{ color: grey2, marginBottom: '0.5em' }}>{props.user.details.email}</p>
+            <p style={{ color: grey2, marginBottom: '3em' }}>{props.user.details.address}</p>
+            <img src={routeImage + props.user.details.image} alt={props.user.details.name} style={{ width: 400 }}/>
+            <p style={{ color: black, marginBottom: '2em', marginTop: '2em' }}>{props.user.details.bio}</p>
+          </> : <Redirect to={user.login.path} />
+        }
         <Link to={userRoutes.subscriptions.path}>
           <Button theme="primary">Subscriptions</Button>
         </Link>

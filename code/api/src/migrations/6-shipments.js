@@ -17,7 +17,7 @@ module.exports = {
           model: 'users',
           key: 'id'
         },
-        allowNull: false
+        allowNull: true
       },
       crateId: {
         type: Sequelize.INTEGER,
@@ -25,7 +25,7 @@ module.exports = {
           model: 'crates',
           key: 'id'
         },
-        allowNull: false
+        allowNull: true
       },
       createdAt: {
         allowNull: false,

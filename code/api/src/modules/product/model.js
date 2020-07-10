@@ -2,7 +2,7 @@
 
 // Product
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('products', {
+  let Product = sequelize.define('products', {
     name: {
       type: DataTypes.STRING
     },
@@ -22,4 +22,12 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.TEXT
     }
   })
+
+  Product.associate = function (models) {
+    Product.belongsToMany(models.Shipment, {
+      through: 'shipmentProducts'
+    })
+  }
+
+  return Product
 }

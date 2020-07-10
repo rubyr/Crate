@@ -61,7 +61,9 @@ describe('ProfileEditor', () => {
   })
 
   it('should call api/actions.js/update() with new user info when save is clicked', () => {
-    const mockUpdate = jest.fn((user) => ({type: "", data: {}, then: () => ({catch: () => ({then: () => {}})})}))
+    const mockUpdate = jest.fn(() => {
+      return Promise.resolve()
+    })
     updateProfile.mockImplementation(mockUpdate)
     const { getByText, getByPlaceholderText } = renderTestWrapper()
     fireEvent.change(getByPlaceholderText("Name"), {target: {value: "sbeven jeven"}})

@@ -30,6 +30,34 @@ module.exports = {
         returned: true,
         createdAt: new Date(),
         updatedAt: new Date()
+      },
+      {
+        shipmentId: 3,
+        productId: 7,
+        returned: false,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        shipmentId: 3,
+        productId: 8,
+        returned: true,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        shipmentId: 4,
+        productId: 1,
+        returned: false,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        shipmentId: 4,
+        productId: 3,
+        returned: true,
+        createdAt: new Date(),
+        updatedAt: new Date()
       }
     ])
   },

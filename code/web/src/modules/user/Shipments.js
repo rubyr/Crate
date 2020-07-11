@@ -75,7 +75,7 @@ class Shipments extends Component {
           <GridCell style={{ display: 'flex', justifyContent: 'center' }}>
             <Card style={{ width: '50em', height: '25em', marginTop: '1em', padding: '1em', backgroundColor: white }}>
               <H2 style={{border: '1px solid black', marginBottom: '0.3em', width: '100%', textAlign: 'center'}}>Clothes for Men</H2>
-              <p style={{ color: black, width: '100%', textAlign: 'center' }}>(Arrival Date <u>January 3rd</u>)</p>
+              <p style={{ color: black, width: '100%', textAlign: 'center' }}>(Arrival Date <u>July 08, 2040</u>)</p>
               <H3 style={{ paddingLeft: '1em', color: black, marginTop: '1em'}}>Items In This Order:</H3>
               <ul style={{marginTop: '2em'}}>
                 <li style={{ paddingLeft: '3em', marginTop: '1em' }}>Cool Hat 🧢</li>

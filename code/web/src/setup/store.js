@@ -5,7 +5,7 @@ import thunk from 'redux-thunk'
 
 // App Imports
 import common from '../modules/common/api/state'
-import user from '../modules/user/api/state'
+import * as user from '../modules/user/api/state'
 import * as product from '../modules/product/api/state'
 import * as subscription from '../modules/subscription/api/state'
 import * as crate from '../modules/crate/api/state'
@@ -15,7 +15,7 @@ import { composeWithDevTools } from "redux-devtools-extension"
 // App Reducer
 const appReducer = combineReducers({
   common,
-  user,
+  ...user,
   ...product,
   ...subscription,
   ...crate

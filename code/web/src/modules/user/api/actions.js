@@ -12,6 +12,10 @@ export const LOGIN_RESPONSE = 'AUTH/LOGIN_RESPONSE'
 export const SET_USER = 'AUTH/SET_USER'
 export const LOGOUT = 'AUTH/LOGOUT'
 
+export const GET_SHIPMENTS_REQUEST = 'SHIPMENTS/LIST_REQUEST'
+export const GET_SHIPMENTS_RESPONSE = 'SHIPMENTS/LIST_RESPONSE'
+export const GET_SHIPMENTS_FAILURE = 'SHIPMENTS/LIST_ERROR'
+
 // Actions
 
 // Set a user after login or using localStorage token
@@ -131,5 +135,40 @@ export function update(user) {
       variables: {id, email, name, address, bio, image},
       fields: ['id']
     }))
+  }
+}
+
+export function getShipmentsByUser(isLoading = true) {
+  return dispatch => {
+    dispatch({
+      type: GET_SHIPMENTS_REQUEST,
+      error: null,
+      isLoading
+    })
+
+    return axios.post(routeApi, query({
+      operation: 'shipmentsByUser',
+      fields: ['id', 'deliveryDate', 'crate { name }']
+    }))
+      .then(response => {
+        if (response.status === 200) {
+
+          dispatch({
+            type: GET_SHIPMENTS_RESPONSE,
+            error: null,
+            isLoading: false,
+            list: response.data.data.shipmentsByUser
+          })
+        } else {
+          console.error(response)
+        }
+      })
+      .catch(error => {
+        dispatch({
+          type: GET_SHIPMENTS_FAILURE,
+          error: 'Some error occurred. Please try again.',
+          isLoading: false
+        })
+      })
   }
 }

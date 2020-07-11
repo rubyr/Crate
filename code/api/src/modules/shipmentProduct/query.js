@@ -22,3 +22,12 @@ export const shipmentProductById = {
   },
   resolve: getById
 }
+
+// shipmentProduct By ShipmentID
+export const shipmentProductShipmentId = {
+  type: ShipmentProductType,
+  args: {
+    shipmentProductId: { type: GraphQLInt }
+  },
+  resolve: getById
+}

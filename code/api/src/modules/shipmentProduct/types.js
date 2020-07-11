@@ -1,5 +1,6 @@
 // Imports
 import { GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLBoolean } from 'graphql'
+// import ProductType from '../product/types'
 
 // ShipmentProduct type
 const ShipmentProductType = new GraphQLObjectType({
@@ -10,6 +11,7 @@ const ShipmentProductType = new GraphQLObjectType({
     id: { type: GraphQLInt },
     shipmentId: { type: GraphQLInt },
     productId: { type: GraphQLInt },
+    // product: { type: ProductType },
     returned: { type: GraphQLBoolean },
     createdAt: { type: GraphQLString },
     updatedAt: { type: GraphQLString }

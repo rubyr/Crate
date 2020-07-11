@@ -8,12 +8,26 @@ export async function getAll() {
 
 // Get shipment by ID
 export async function getById(parentValue, { shipmentId }) {
-  const shipment = await models.Shipment.findOne({ where: { id: shipmentId } })
+  return await models.Shipment.findOne({
+    where: { id: shipmentId },
+    include: [
+      { model: models.Crate, as: 'crate' },
+    ]
+  })
+}
 
-  if (!shipment) {
-    // Shipment does not exists
-    throw new Error('The shipment you are looking for does not exists or has been deleted.')
+// Get shipments by user
+export async function getByUser(parentValue, { }, { auth }) {
+  if (auth.user && auth.user.id > 0) {
+    return await models.Shipment.findAll({
+      where: {
+        userId: auth.user.id
+      },
+      include: [
+        { model: models.Crate, as: 'crate' },
+      ]
+    })
   } else {
-    return shipment
+    throw new Error('Please login to view your shipments.')
   }
 }

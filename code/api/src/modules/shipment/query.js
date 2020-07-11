@@ -19,7 +19,7 @@ export const shipments = {
 export const shipmentById = {
   type: ShipmentType,
   args: {
-    shipmentId: { type: GraphQLInt }
+    id: { type: GraphQLInt }
   },
   resolve: getById
 }
@@ -29,4 +29,3 @@ export const shipmentsByUser = {
   type: new GraphQLList(ShipmentType),
   resolve: getByUser
 }
-

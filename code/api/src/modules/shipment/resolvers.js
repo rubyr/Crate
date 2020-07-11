@@ -7,9 +7,9 @@ export async function getAll() {
 }
 
 // Get shipment by ID
-export async function getById(parentValue, { shipmentId }) {
+export async function getById(parentValue, { id }) {
   return await models.Shipment.findOne({
-    where: { id: shipmentId },
+    where: { id },
     include: [
       { model: models.Crate, as: 'crate' },
     ]

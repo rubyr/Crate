@@ -14,7 +14,7 @@ module.exports = function (sequelize, DataTypes) {
     }
   })
 
-  Shipment.associate = function (models) {
+  ShipmentProduct.associate = function (models) {
     ShipmentProduct.belongsTo(models.Shipment)
     ShipmentProduct.belongsTo(models.Product)
   }

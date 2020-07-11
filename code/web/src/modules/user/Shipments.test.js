@@ -34,5 +34,26 @@ describe('Shipments', () => {
     expect(itemListHeading).toBeInTheDocument()
     expect(card1Title).toHaveLength(2)
   })
+  
+  it('should select the first shipment on the left for displaying the detailed information card', () => {
+
+  })
+  
+  it('should be able to select a different shipment from the left to be the displayed detailed information card', () => {
+
+  })
+
+  it("should display a 'To Arrive on *date*' card subheading if the shipment hasn't arrived yet", () => {
+
+  })
+  
+  it("should display an 'Arrived on *date*' card subheading if the shipment has already been delivered", () => {
+
+  })
+  
+
+  it("should have a button that allows the user to change the delivery date on the detailed information card if it hasn't arrived yet", () => {
+
+  })
 
 })

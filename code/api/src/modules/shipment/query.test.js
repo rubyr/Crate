@@ -28,21 +28,10 @@ describe("user queries", () => {
   it("returns a shipment with a specific ID", async () => {
     const response = await request(server)
       .get('/')
-      .send({ query: '{ shipmentById(shipmentId: 1) { deliveryDate userId crateId } }' })
+      .send({ query: '{ shipmentById(id: 1) { deliveryDate userId crate { name } } }' })
       .expect(200)
-    // expect(response.body.data.shipmentById.id).toEqual(1) // FAIL --> ??? why
-    expect(response.body.data.shipmentById.deliveryDate).toEqual("1594254537654")// ("2020-07-08 18:28:57.654-06")
+    expect(response.body.data.shipmentById.deliveryDate).toEqual("1594254537654")
     expect(response.body.data.shipmentById.userId).toEqual(2)
-    expect(response.body.data.shipmentById.crateId).toEqual(3)
+    expect(response.body.data.shipmentById.crate.name).toEqual("Accessories for Men")
   })
-  
-  it("returns a crate name", async () => {
-    const response = await request(server)
-      .get('/')
-      .send({ query: '{ shipmentById(shipmentId: 1) { crateId } }' })
-      .expect(200)
-    expect(response.body.data.shipmentById.crateId).toEqual(3)
-    // expect(response.body.data.shipmentById.crate.name).toEqual("Accessories for Men") // FAIL
-  })
-
 })

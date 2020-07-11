@@ -18,7 +18,7 @@ module.exports = function (sequelize, DataTypes) {
     Shipment.belongsTo(models.Crate)
     Shipment.belongsTo(models.User)
     Shipment.belongsToMany(models.Product, {
-    through: 'shipmentProducts'})
+    through: models.ShipmentProduct })
   }
 
   return Shipment

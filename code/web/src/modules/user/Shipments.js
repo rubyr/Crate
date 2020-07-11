@@ -30,19 +30,21 @@ const Shipments = () => (
       
         {/* Left Content - Shipment Cards */}
         <GridCell alignCenter={true} justifyCenter={true} style={{maxWidth: '30em'}}>
-          <Card style={{ alignSelf: 'center', width: '20em', backgroundColor: white, margin: '2em', textAlign: 'center', padding: '2em' }}>
-            <H4 style={{ color: black}}>Clothes for Men</H4>
-            <p style={{ marginTop: '2em' }}>Arrived on January 3rd</p>
-          </Card>
-          <Card style={{ width: '20em', backgroundColor: white, margin: '2em', textAlign: 'center', padding: '2em' }}>
-            <H4 style={{ color: black}}>Accessories for Women</H4>
-            <p style={{ marginTop: '2em' }}>To Arrive on January 30th</p>
-          </Card>
+          <div style={{height: '100vh', borderRight: '2px solid black'}}>
+            <Card style={{ alignSelf: 'center', width: '20em', backgroundColor: white, margin: '2em', textAlign: 'center', padding: '2em' }}>
+              <H4 style={{ color: black}}>Clothes for Men</H4>
+              <p style={{ marginTop: '2em' }}>Arrived on January 3rd</p>
+            </Card>
+            <Card style={{ width: '20em', backgroundColor: white, margin: '2em', textAlign: 'center', padding: '2em' }}>
+              <H4 style={{ color: black}}>Accessories for Women</H4>
+              <p style={{ marginTop: '2em' }}>To Arrive on January 30th</p>
+            </Card>
+          </div>
         </GridCell>
 
         {/* Right Content - Shipment Card Details */}
         <GridCell style={{ display: 'flex', justifyContent: 'center' }}>
-          <Card style={{ width: '50em', marginTop: '1em', padding: '1em', backgroundColor: white }}>
+          <Card style={{ width: '50em', height: '25em', marginTop: '1em', padding: '1em', backgroundColor: white }}>
             <H2 style={{border: '1px solid black', marginBottom: '0.3em', width: '100%', textAlign: 'center'}}>Clothes for Men</H2>
             <p style={{ color: black, width: '100%', textAlign: 'center' }}>(Arrival Date <u>January 3rd</u>)</p>
             <H3 style={{ paddingLeft: '1em', color: black, marginTop: '1em'}}>Items In This Order:</H3>

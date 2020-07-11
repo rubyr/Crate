@@ -21,5 +21,18 @@ const renderTestWrapper = () => {
 }
 
 describe('Shipments', () => {
+  it('should render the correct content', () => {
+    const { getByText, getAllByText } = renderTestWrapper()
+
+    const pageTitle = getByText('Your Shipments')
+    const titleSubheading = getByText('View all your past/future shipments, the items it contains, and which items you kept!')
+    const card1Title = getAllByText('Clothes for Men')
+    const itemListHeading = getByText('Items In This Order:')
+    
+    expect(pageTitle).toBeInTheDocument()
+    expect(titleSubheading).toBeInTheDocument()
+    expect(itemListHeading).toBeInTheDocument()
+    expect(card1Title).toHaveLength(2)
+  })
 
 })
